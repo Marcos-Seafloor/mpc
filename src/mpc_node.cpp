@@ -38,18 +38,18 @@ public:
     explicit MPCNode()
     {
         m_helm_pub = m_node_handle.advertise<marine_msgs::Helm>("/helm",1);
-        m_display_pub = m_node_handle.advertise<geographic_visualization_msgs::GeoVizItem>("/project11/display",1);
-        m_disturbance_estimate_pub = m_node_handle.advertise<geometry_msgs::Vector3>("/mpc/disturbance_estimate", 1);
+        m_display_pub = m_node_handle.advertise<geographic_visualization_msgs::GeoVizItem>("project11/display",1);
+        m_disturbance_estimate_pub = m_node_handle.advertise<geometry_msgs::Vector3>("mpc/disturbance_estimate", 1);
 
-        m_controller_msgs_sub = m_node_handle.subscribe("/controller_msgs", 10, &MPCNode::controllerMsgsCallback, this);
-        m_position_sub = m_node_handle.subscribe("/position_map", 10, &MPCNode::positionCallback, this);
-        m_heading_sub = m_node_handle.subscribe("/heading", 10, &MPCNode::headingCallback, this);
-        m_speed_sub = m_node_handle.subscribe("/sog", 10, &MPCNode::speedCallback, this);
-        m_piloting_mode_sub = m_node_handle.subscribe("/project11/piloting_mode", 10, &MPCNode::pilotingModeCallback, this);
-        m_reference_trajectory_sub = m_node_handle.subscribe("/mpc/reference_trajectory", 10, &MPCNode::referenceTrajectoryCallback, this);
-        m_disturbance_estimate_sub = m_node_handle.subscribe("/disturbance_estimate", 5, &MPCNode::disturbanceEstimateCallback, this);
+        m_controller_msgs_sub = m_node_handle.subscribe("controller_msgs", 10, &MPCNode::controllerMsgsCallback, this);
+        m_position_sub = m_node_handle.subscribe("position_map", 10, &MPCNode::positionCallback, this);
+        m_heading_sub = m_node_handle.subscribe("heading", 10, &MPCNode::headingCallback, this);
+        m_speed_sub = m_node_handle.subscribe("sog", 10, &MPCNode::speedCallback, this);
+        m_piloting_mode_sub = m_node_handle.subscribe("project11/piloting_mode", 10, &MPCNode::pilotingModeCallback, this);
+        m_reference_trajectory_sub = m_node_handle.subscribe("mpc/reference_trajectory", 10, &MPCNode::referenceTrajectoryCallback, this);
+        m_disturbance_estimate_sub = m_node_handle.subscribe("disturbance_estimate", 5, &MPCNode::disturbanceEstimateCallback, this);
 
-        m_update_reference_trajectory_service = m_node_handle.advertiseService("/mpc/update_reference_trajectory", &MPCNode::updateReferenceTrajectory, this);
+        m_update_reference_trajectory_service = m_node_handle.advertiseService("mpc/update_reference_trajectory", &MPCNode::updateReferenceTrajectory, this);
 
         m_Controller = new Controller(this);
 
