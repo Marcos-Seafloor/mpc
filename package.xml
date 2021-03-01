@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>mpc</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>Package for Model Predictive Control</description>
-
+  <!-- version 0.0.0 original -->
   <maintainer email="afb2001@wildcats.unh.edu">Alex Brown</maintainer>
+  <!-- version 1.0.0 modified -->
+  <maintainer email="marcos.barrera@seafloorsystems.com">Marcos Barrera</maintainer>
 
   <license>BSD</license>
 
